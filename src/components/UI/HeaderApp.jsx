@@ -6,8 +6,8 @@ export const HeaderApp = ({ darkMode, setDarkMode }) => {
   return (
     <>
       <header className="container px-4 mx-auto">
-        <div className="flex items-center justify-between py-8 text-white">
-          <h1 className="uppercase text-2xl tracking-[.25em] font-bold">
+        <div className="flex items-center justify-between py-8 text-white md:py-24">
+          <h1 className="uppercase text-2xl md:text-6xl tracking-[.25em] font-bold">
             Todo
           </h1>
           <button onClick={() => handlerMode()}>
