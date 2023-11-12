@@ -36,10 +36,16 @@ function App() {
     setTodosFilter(newTodos);
   };
 
+  const handlerRevomeTodo = (id) => {
+    const newTodoRemove = todos.filter((item) => item.id !== id);
+    setTodos(newTodoRemove);
+    setTodosFilter(todos);
+  };
+
   const handlerDeleteTodo = () => {
     const newTodoDelete = todos.filter(({ complete }) => complete !== true);
     setTodos(newTodoDelete);
-    setTodosFilter(newTodoDelete);
+    setTodosFilter(todos);
   };
 
   const handlerFilterTodo = (e) => {
@@ -64,6 +70,7 @@ function App() {
             todos={todofilter}
             handlerUpdateTodo={handlerUpdateTodo}
             handlerDeleteTodo={handlerDeleteTodo}
+            handlerRevomeTodo={handlerRevomeTodo}
           />
         </main>
         <FilterSection handlerFilterTodo={handlerFilterTodo} />

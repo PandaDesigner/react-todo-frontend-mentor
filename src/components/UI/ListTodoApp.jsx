@@ -7,6 +7,7 @@ export const ListTodoApp = ({
   todos,
   handlerUpdateTodo,
   handlerDeleteTodo,
+  handlerRevomeTodo,
 }) => {
   return (
     <>
@@ -17,6 +18,7 @@ export const ListTodoApp = ({
             id={id}
             {...resProps}
             handlerUpdateTodo={handlerUpdateTodo}
+            handlerRevomeTodo={handlerRevomeTodo}
           />
         ))}
         <section className="flex p-4 align-middle text-slate-600 dark:text-slate-400">
