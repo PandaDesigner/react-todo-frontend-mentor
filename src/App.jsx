@@ -23,6 +23,7 @@ function App() {
   const handlerCreateTodo = (title) => {
     const newTodo = new Task(title);
     setTodos([...todos, newTodo]);
+    setTodosFilter([...todos, newTodo]);
   };
   const handlerUpdateTodo = (id, action = false) => {
     const newTodos = todos.map((todo) => {
