@@ -5,9 +5,9 @@ export class Task {
   title;
   complete;
 
-  constructor(title) {
+  constructor(title, complete = false) {
     this.id = uuid();
-    this.title = title;
-    this.complete = false;
+    this.title = title.trim();
+    this.complete = complete;
   }
 }

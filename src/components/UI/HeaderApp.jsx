@@ -1,8 +1,24 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { MoonIcon, SunIcon } from "../icons";
 
-export const HeaderApp = ({ darkMode, setDarkMode }) => {
+import { MoonIcon, SunIcon } from "../icons";
+import { CheckIcon } from "../icons/CheckIcon";
+import { handlerChackChange } from "../../../handlers";
+import { useState } from "react";
+
+export const HeaderApp = ({ darkMode, setDarkMode, handlerCreateTodo }) => {
+  const [title, setTitle] = useState("");
+
   const handlerMode = () => setDarkMode(!darkMode);
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) {
+      return setTitle("");
+    }
+    handlerCreateTodo(title);
+    setTitle("");
+  };
+
   return (
     <>
       <header className="container px-4 mx-auto">
@@ -14,11 +30,20 @@ export const HeaderApp = ({ darkMode, setDarkMode }) => {
             {darkMode ? <SunIcon /> : <MoonIcon />}
           </button>
         </div>
-        <form className="flex items-center justify-center gap-2 p-4 mb-4 overflow-hidden bg-white rounded-md dark:bg-slate-700">
-          <span className="inline-block w-5 h-5 border-2 border-gray-300 rounded-full"></span>
+        <form
+          onSubmit={handlerSubmit}
+          className="flex items-center justify-center gap-2 p-4 mb-4 overflow-hidden bg-white rounded-md dark:bg-slate-700"
+        >
+          <span
+            type="button"
+            className={`inline-block w-5 h-5 px-1 text-center border border-gray-300 rounded-full`}
+          ></span>
           <input
             className="w-full text-gray-400 outline-none dark:bg-slate-700"
             type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            name="titleTask"
+            value={title}
             placeholder="Create a new Task..."
           />
         </form>
