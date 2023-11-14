@@ -11,7 +11,7 @@ export const ListTodoApp = ({
 }) => {
   return (
     <>
-      <section className="flex flex-col overflow-hidden bg-white rounded-md dark:bg-slate-700">
+      <section className="flex flex-col overflow-hidden transition-all duration-500 bg-white rounded-md dark:bg-slate-700">
         {todos.map(({ id, ...resProps }) => (
           <ItemList
             key={id}
@@ -21,7 +21,7 @@ export const ListTodoApp = ({
             handlerRevomeTodo={handlerRevomeTodo}
           />
         ))}
-        <section className="flex p-4 align-middle text-slate-600 dark:text-slate-400">
+        <section className="flex p-4 align-middle transition-colors duration-500 text-slate-600 dark:text-slate-400">
           <span className="grow">
             <span className="dark:text-slate-100">{todos.length}</span> item
             left

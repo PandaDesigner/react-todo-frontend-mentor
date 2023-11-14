@@ -28,8 +28,8 @@ export const HeaderApp = ({ handlerCreateTodo, handlerMode, darkMode }) => {
 
   return (
     <>
-      <header className="container px-4 mx-auto">
-        <div className="flex items-center justify-between py-8 text-white md:py-24">
+      <header className="container px-4 mx-auto transition-colors duration-300">
+        <div className="flex items-center justify-between py-8 text-white transition-colors duration-500 md:py-24">
           <h1 className="uppercase text-2xl md:text-6xl tracking-[.25em] font-bold">
             Todo
           </h1>
@@ -39,14 +39,14 @@ export const HeaderApp = ({ handlerCreateTodo, handlerMode, darkMode }) => {
         </div>
         <form
           onSubmit={handlerSubmit}
-          className="flex items-center justify-center gap-2 p-4 mb-4 overflow-hidden bg-white rounded-md dark:bg-slate-700"
+          className="flex items-center justify-center gap-2 p-4 mb-4 overflow-hidden transition-colors duration-300 bg-white rounded-md dark:bg-slate-700"
         >
           <span
             type="button"
-            className={`inline-block w-5 h-5 px-1 text-center border border-gray-300 rounded-full`}
+            className={` transition-colors duration-300 inline-block w-5 h-5 px-1 text-center border border-gray-300 rounded-full`}
           ></span>
           <input
-            className="w-full text-gray-400 outline-none dark:bg-slate-700"
+            className="w-full text-gray-400 transition-colors duration-300 outline-none tra nsition-colors dark:bg-slate-700"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             name="titleTask"
