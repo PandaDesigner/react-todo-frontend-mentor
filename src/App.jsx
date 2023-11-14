@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HeaderApp,
   FooterApp,
@@ -18,13 +18,16 @@ function App() {
   const [todos, setTodos] = useState(initialStateTodo);
   const [todofilter, setTodosFilter] = useState(todos);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const handlerMode = () => setDarkMode(!darkMode);
 
   const handlerCreateTodo = (title) => {
     const newTodo = new Task(title);
     setTodos([...todos, newTodo]);
     setTodosFilter([...todos, newTodo]);
-    localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
   };
   const handlerUpdateTodo = (id, action = false) => {
     const newTodos = todos.map((todo) => {
@@ -35,21 +38,21 @@ function App() {
       return todo;
     });
     setTodos(newTodos);
-    localStorage.setItem("todos", JSON.stringify(newTodos));
+
     setTodosFilter(newTodos);
   };
 
   const handlerRevomeTodo = (id) => {
     const newTodoRemove = todos.filter((item) => item.id !== id);
     setTodos(newTodoRemove);
-    localStorage.setItem("todos", JSON.stringify(newTodoRemove));
+
     setTodosFilter(todos);
   };
 
   const handlerDeleteTodo = () => {
     const newTodoDelete = todos.filter(({ complete }) => complete !== true);
     setTodos(newTodoDelete);
-    localStorage.setItem("todos", JSON.stringify(newTodoDelete));
+
     setTodosFilter(todos);
   };
 
