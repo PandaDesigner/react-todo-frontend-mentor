@@ -4,12 +4,19 @@
 import { MoonIcon, SunIcon } from "../icons";
 import { CheckIcon } from "../icons/CheckIcon";
 import { handlerChackChange } from "../../../handlers";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const HeaderApp = ({ darkMode, setDarkMode, handlerCreateTodo }) => {
+export const HeaderApp = ({ handlerCreateTodo, handlerMode, darkMode }) => {
   const [title, setTitle] = useState("");
 
-  const handlerMode = () => setDarkMode(!darkMode);
+  useEffect(() => {
+    darkMode
+      ? (document.documentElement.classList.add("dark"),
+        (localStorage.theme = "dark"))
+      : (document.documentElement.classList.remove("dark"),
+        (localStorage.theme = "ligth"));
+  }, [darkMode]);
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (!title.trim()) {

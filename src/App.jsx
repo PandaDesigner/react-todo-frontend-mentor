@@ -14,11 +14,14 @@ const initialStateTodo = [
   new Task("Create html Todo"),
   new Task("Create react Todo"),
 ];
+const inicalStateTheme = localStorage.theme === "dark";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(inicalStateTheme);
   const [todos, setTodos] = useState(initialStateTodo);
   const [todofilter, setTodosFilter] = useState(todos);
+
+  const handlerMode = () => setDarkMode(!darkMode);
 
   const handlerCreateTodo = (title) => {
     const newTodo = new Task(title);
@@ -62,8 +65,8 @@ function App() {
     <>
       <div className=' bg-[url("./assets/images/bg-mobile-light.jpg")] dark:bg-[url("./assets/images/bg-mobile-dark.jpg")] md:bg-[url("./assets/images/bg-desktop-light.jpg")] md:dark:bg-[url("./assets/images/bg-desktop-dark.jpg")] bg-contain bg-slate-300 dark:bg-slate-900 bg-top-center bg-no-repeat min-h-screen  relative'>
         <HeaderApp
+          handlerMode={handlerMode}
           darkMode={darkMode}
-          setDarkMode={setDarkMode}
           handlerCreateTodo={handlerCreateTodo}
         />
         <main className="container flex flex-col px-4 mx-auto">
