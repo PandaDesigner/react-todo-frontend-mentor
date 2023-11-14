@@ -28,9 +28,9 @@ export const HeaderApp = ({ handlerCreateTodo, handlerMode, darkMode }) => {
 
   return (
     <>
-      <header className="container px-4 mx-auto transition-colors duration-300">
-        <div className="flex items-center justify-between py-8 text-white transition-colors duration-500 md:py-24">
-          <h1 className="uppercase text-2xl md:text-6xl tracking-[.25em] font-bold">
+      <header className="container max-w-3xl px-4 mx-auto transition-colors duration-300">
+        <div className="flex items-center justify-between py-8 text-white transition-colors duration-500 sm:py-16 md:py-24">
+          <h1 className="uppercase text-xl sm:text-3xl md:text-6xl tracking-[.25em] font-bold">
             Todo
           </h1>
           <button onClick={() => handlerMode()}>
@@ -39,7 +39,7 @@ export const HeaderApp = ({ handlerCreateTodo, handlerMode, darkMode }) => {
         </div>
         <form
           onSubmit={handlerSubmit}
-          className="flex items-center justify-center gap-2 p-4 mb-4 overflow-hidden transition-colors duration-300 bg-white rounded-md dark:bg-slate-700"
+          className="flex items-center justify-center gap-2 p-4 mx-auto mb-4 overflow-hidden transition-colors duration-300 bg-white rounded-md dark:bg-slate-700 "
         >
           <span
             type="button"
