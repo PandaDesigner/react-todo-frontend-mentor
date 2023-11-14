@@ -8,12 +8,9 @@ import {
 } from "./components/UI";
 import { Task } from "./Models/newTask";
 
-const initialStateTodo = [
-  new Task("Create css Todo", true),
-  new Task("Create js Todo", true),
-  new Task("Create html Todo"),
-  new Task("Create react Todo"),
-];
+const initialStateTodo = localStorage.todos
+  ? JSON.parse(localStorage.todos)
+  : [];
 const inicalStateTheme = localStorage.theme === "dark";
 
 function App() {
@@ -27,6 +24,7 @@ function App() {
     const newTodo = new Task(title);
     setTodos([...todos, newTodo]);
     setTodosFilter([...todos, newTodo]);
+    localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
   };
   const handlerUpdateTodo = (id, action = false) => {
     const newTodos = todos.map((todo) => {
@@ -37,18 +35,21 @@ function App() {
       return todo;
     });
     setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
     setTodosFilter(newTodos);
   };
 
   const handlerRevomeTodo = (id) => {
     const newTodoRemove = todos.filter((item) => item.id !== id);
     setTodos(newTodoRemove);
+    localStorage.setItem("todos", JSON.stringify(newTodoRemove));
     setTodosFilter(todos);
   };
 
   const handlerDeleteTodo = () => {
     const newTodoDelete = todos.filter(({ complete }) => complete !== true);
     setTodos(newTodoDelete);
+    localStorage.setItem("todos", JSON.stringify(newTodoDelete));
     setTodosFilter(todos);
   };
 
