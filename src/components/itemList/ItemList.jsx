@@ -18,7 +18,7 @@ export const ItemList = React.forwardRef(
       <article
         ref={ref}
         {...resProps}
-        className="flex items-center justify-center gap-2 px-4 py-4 transition-all duration-500 bg-white border-b rounded-md border-b-slate-300 dark:bg-slate-700"
+        className="flex items-center justify-center gap-2 px-4 py-4 transition-all duration-500 bg-white border-b border-b-slate-300 dark:bg-slate-700"
       >
         <button
           onClick={() => handlerActive()}

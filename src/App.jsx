@@ -14,8 +14,10 @@ const inicalStateTheme = localStorage.theme === "dark";
 
 const reorder = (list, startInde, endIndex) => {
   const itenOrder = [...list];
+
   const [removed] = itenOrder.splice(startInde, 1);
   itenOrder.splice(endIndex, 0, removed);
+  console.log(itenOrder);
   return itenOrder;
 };
 
@@ -24,9 +26,23 @@ function App() {
   const [todos, setTodos] = useState(initialStateTodo);
   const [todofilter, setTodosFilter] = useState(todos);
 
-  const handlerDragEnd = (item) => {};
+  const handlerDragEnd = (item) => {
+    const { source, destination } = item;
+    if (!destination) return;
+
+    if (
+      source.index === destination.inde &&
+      source.droppableId === destination.droppableId
+    )
+      return;
+
+    setTodos((prevTasks) =>
+      reorder(prevTasks, source.index, destination.index)
+    );
+  };
 
   useEffect(() => {
+    setTodosFilter(todos);
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
