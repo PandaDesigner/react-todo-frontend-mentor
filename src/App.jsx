@@ -7,16 +7,24 @@ import {
   ListTodoApp,
 } from "./components/UI";
 import { Task } from "./Models/newTask";
+import { list } from "postcss";
 
-const initialStateTodo = localStorage.todos
-  ? JSON.parse(localStorage.todos)
-  : [];
+const initialStateTodo = JSON.parse(localStorage.todos) || [];
 const inicalStateTheme = localStorage.theme === "dark";
+
+const reorder = (list, startInde, endIndex) => {
+  const itenOrder = [...list];
+  const [removed] = itenOrder.splice(startInde, 1);
+  itenOrder.splice(endIndex, 0, removed);
+  return itenOrder;
+};
 
 function App() {
   const [darkMode, setDarkMode] = useState(inicalStateTheme);
   const [todos, setTodos] = useState(initialStateTodo);
   const [todofilter, setTodosFilter] = useState(todos);
+
+  const handlerDragEnd = (item) => {};
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -79,6 +87,7 @@ function App() {
             handlerUpdateTodo={handlerUpdateTodo}
             handlerDeleteTodo={handlerDeleteTodo}
             handlerRevomeTodo={handlerRevomeTodo}
+            handlerDragEnd={handlerDragEnd}
           />
         </main>
         <FilterSection handlerFilterTodo={handlerFilterTodo} />

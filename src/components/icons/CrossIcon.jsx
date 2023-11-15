@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-export const CrossIcon = ({ color = "#494C6B" }) => {
+export const CrossIcon = ({ color = "#494C6B", ...resProps }) => {
   return (
     <>
       <svg
+        {...resProps}
         fill={color}
         xmlns="http://www.w3.org/2000/svg"
         width="18"
