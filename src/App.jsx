@@ -12,7 +12,7 @@ import { list } from "postcss";
 const initialStateTodo = localStorage.todos
   ? JSON.parse(localStorage.todos)
   : [];
-const inicalStateTheme = localStorage.theme === "dark" || "dark";
+const inicalStateTheme = localStorage.theme === "dark";
 
 const reorder = (list, startInde, endIndex) => {
   const itenOrder = [...list];
