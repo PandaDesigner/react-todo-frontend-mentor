@@ -10,7 +10,7 @@ import { Task } from "./Models/newTask";
 import { list } from "postcss";
 
 const initialStateTodo = JSON.parse(localStorage.todos) || [];
-const inicalStateTheme = localStorage.theme === "dark";
+const inicalStateTheme = localStorage.theme === "dark" || "dark";
 
 const reorder = (list, startInde, endIndex) => {
   const itenOrder = [...list];
